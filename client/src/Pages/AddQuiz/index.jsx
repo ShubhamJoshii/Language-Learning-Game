@@ -15,6 +15,7 @@ const index = () => {
     Existing: true
   });
 
+  // fetchin the all the Quizes
   const fetchQuiz = async () => {
     await axios.get("/api/fetchAllQuiz").then((response) => {
       setAllQuiz(response.data.Data)
@@ -27,11 +28,14 @@ const index = () => {
     fetchQuiz();
   }, [])
 
+  // for adding the data to  "AddLanguage" state 
   const handleNewLanguage = (e) => {
     const name = e.target.name
     const value = e.target.value
     setAddLanguage({ ...AddLanguage, [name]: value })
   }
+
+  // for adding quiz choices to "AddLanguage State"
   const handleChoices = (e, id) => {
     const value = e.target.value;
     let arr = AddLanguage.Quiz;
@@ -39,6 +43,7 @@ const index = () => {
     setAddLanguage({ ...AddLanguage, Quiz: arr })
   }
 
+  // for saving Quiz on existing or new Quiz Language
   const handleNewQuizSave = async (e) => {
     e.preventDefault();
     if (AddLanguage.Quiz.length >= 2 && AddLanguage.Answer) {

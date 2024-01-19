@@ -42,6 +42,7 @@ const UserPerformance = () => {
         },
     };
 
+    // feching UserPerformance and showing through using react Line Chart
     const fetchUserPerformance = async () => {
         await axios.get("/api/fetchUserPerformance").then((response) => {
             setAllData(response.data.obj)

@@ -120,6 +120,7 @@ const ExerciseSchema = new mongoose.Schema({
   },
 });
 
+// For encrypting the password.
 UserSchema.pre("save", async function (next) {
   if (this.isModified("Password")) {
     this.Password = await bcrypt.hash(this.Password, 12);
@@ -128,6 +129,7 @@ UserSchema.pre("save", async function (next) {
   next();
 });
 
+// for genrating Authentication Token (when is Logged in)
 UserSchema.methods.generateAuthToken = async function () {
   try {
     let Token = jwt.sign({ _id: this._id }, process.env.SECRET_KEY);

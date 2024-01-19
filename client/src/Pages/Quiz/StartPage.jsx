@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactLoading from 'react-loading';
 
+// Start Page of Quiz Excercise
 const StartPage = ({createQuizExcercise}) => {
   return (
     <div id='StartQuizPage'>

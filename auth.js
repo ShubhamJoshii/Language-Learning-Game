@@ -5,6 +5,8 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const Authenication = require("./Authenication");
 
+
+// Home Route get fetch info of user if user is logged onto a webpage
 router.get("/home", Authenication, async (req, res) => {
   if (req.rootUser) {
     const fetchRemainingExercise = await ExerciseModel.findOne({
@@ -21,6 +23,7 @@ router.get("/home", Authenication, async (req, res) => {
   }
 });
 
+// for Registering a New User
 router.post("/register", async (req, res) => {
   const { Name, Email, Password, Confirm_Password } = req.body;
   // console.log(req.body);
@@ -46,6 +49,7 @@ router.post("/register", async (req, res) => {
   }
 });
 
+// for user Login into webpage
 router.post("/login", async (req, res) => {
   const { Email, Password } = req.body;
   const Login_Date = Date().toString();
@@ -74,33 +78,42 @@ router.post("/login", async (req, res) => {
   }
 });
 
+// for logout User
 router.get("/logout", Authenication, async (req, res) => {
   res.clearCookie("LanguageAssessmentToken", { path: "/" });
   res.status(200).send({ message: "User Logout" });
 });
 
+// for fetching All the Quiz from the backend
 router.get("/fetchAllQuiz", async (req, res) => {
   const quizes = await QuizModel.find();
   res.status(200).send({ message: "Fetched Quize", Data: quizes });
 });
 
+// fetch Quiz on basis of quiz language and category
 router.get("/getQuizesCategory/:quizLanguage", async (req, res) => {
   const { quizLanguage } = req.params;
   const quizes = await QuizModel.findOne({ Language: quizLanguage });
   res.send(quizes._id);
 });
 
+// fetching Quiz on the basis of Quiz language and Difficulty Level
 router.post("/fetchQuiz/:quizLanguageID/:quizLevel", async (req, res) => {
   const { quizLanguageID, quizLevel } = req.params;
   const { attempedQuiz } = req.body;
   try {
+    // find one quizes data where quizlanguage _id is same
     const quizes = await QuizModel.findOne({ _id: quizLanguageID });
     // console.log(attempedQuiz);
+
+    // filtering on basis already atttempted and Diffculty Level quiz from the "quizes"  
     const remainingData = await quizes.Questions.filter(
       (e) =>
         !attempedQuiz?.includes(e._id.toString()) &&
         e.Difficulty_Level === Number(quizLevel)
     );
+
+    // Random fetch one quiz from remainingData
     const randomIndex = Math.floor(Math.random() * remainingData.length);
     res.status(200).send({
       message: "Fetched Quizes",
@@ -113,6 +126,8 @@ router.post("/fetchQuiz/:quizLanguageID/:quizLevel", async (req, res) => {
   }
 });
 
+
+// Adding a New quiz on existing Language Quizes or Crating a New Langauge Quiz Section
 router.post("/addQuiz",Authenication, async (req, res) => {
   const { Language, Questions } = req.body;
   // console.log(Language, Questions);
@@ -137,6 +152,7 @@ router.post("/addQuiz",Authenication, async (req, res) => {
   }
 });
 
+// Saving the User quiz Excercises 
 router.post("/saveExercise/:exercise_id", Authenication, async (req, res) => {
   const { exercise_id } = req.params;
   const {
@@ -174,6 +190,7 @@ router.post("/saveExercise/:exercise_id", Authenication, async (req, res) => {
   }
 });
 
+// Fetching the Result of User after Attemping all The quizes
 router.get("/fetctResult/:exercise_id", async (req, res) => {
   const { exercise_id } = req.params;
   const userQuizExists = await ExerciseModel.findOne({ _id: exercise_id });
@@ -187,6 +204,7 @@ router.get("/fetctResult/:exercise_id", async (req, res) => {
   }
 });
 
+// Delete the existing User Quiz exercise mainly Left Quiz
 router.delete("/excercise/:_id", async (req, res) => {
   const { _id } = req.params;
   const deleteExcercise = await ExerciseModel.deleteOne({ _id });
@@ -197,6 +215,7 @@ router.delete("/excercise/:_id", async (req, res) => {
   }
 });
 
+// Fetching the existing User Quiz exercise mainly Left Quiz Excerxises
 router.get("/excercise/:_id", async (req, res) => {
   const { _id } = req.params;
   const fetchExcercise = await ExerciseModel.findOne({ _id });
@@ -208,6 +227,7 @@ router.get("/excercise/:_id", async (req, res) => {
   }
 });
 
+// for creating New Excersise only when Admin is logged in
 router.post(
   "/createQuizExcercise/:QuizLanguageID",
   Authenication,
@@ -226,6 +246,7 @@ router.post(
 );
 
 // SCORE BOARD SCORE BOARD SCORE BOARD SCORE BOARD SCORE BOARD SCORE BOARD SCORE BOARD SCORE BOARD SCORE BOARD SCORE BOARD SCORE BOARD SCORE BOARD
+// for feching usre performance
 router.get("/fetchUserPerformance", Authenication, async (req, res) => {
   const fetchQuizLanguage = await QuizModel.find();
   const fetchExcercise = await ExerciseModel.find({ UserID: req.userID });
@@ -250,6 +271,7 @@ router.get("/fetchUserPerformance", Authenication, async (req, res) => {
   res.send({ obj, languageType });
 });
 
+// for feching all User Result
 router.get("/fetchAllResult", Authenication, async (req, res) => {
   const fetchQuizLanguage = await QuizModel.find();
   const fetchExcercise = await ExerciseModel.find({ UserID: req.userID });
@@ -269,6 +291,7 @@ router.get("/fetchAllResult", Authenication, async (req, res) => {
   res.send({ dataList, languageType });
 });
 
+// For fetching Global User Result
 router.get("/fetchGlobalScore", async (req, res) => {
   const fetchQuizLanguage = await QuizModel.find();
   const fetchUser = await UsersModel.find();

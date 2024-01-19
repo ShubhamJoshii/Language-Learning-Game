@@ -43,6 +43,7 @@ const index = () => {
     return (<>
         <ScoreBoardHeader />
         <div id='Score-Board'>
+            {/* // showing Components on basis of states */}
             {
                 params.type === "UserPerformance" &&
                 <UserPerformance />

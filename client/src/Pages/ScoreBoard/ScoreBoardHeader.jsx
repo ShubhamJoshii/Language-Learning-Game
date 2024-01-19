@@ -20,16 +20,12 @@ const ScoreBoardHeader = () => {
 
   return (
     <div id="ScoreBoardHeader">
+      {/* // Header for Score Board */}
       {
         routes.map((curr,id)=>{
           return <NavLink to={curr.link} style={{color:`#${Math.floor(Math.random() * 16777215).toString(16)}`}}>{curr.Text}</NavLink>
         })
       }
-        {/* <NavLink to={"/scoreboard/UserPerformance"}>User Performance</NavLink>
-        <NavLink to={"/scoreboard/ScoreBoard"}>Score Board</NavLink>
-        <NavLink to={"/scoreboard/GlobalScoreBoard"}>Global Score Board</NavLink> */}
-        {/* <NavLink to={"/scoreboard/UserPerformance"}>UserPerformance</NavLink>
-        <NavLink to={"/scoreboard/UserPerformance"}>UserPerformance</NavLink> */}
     </div>
   )
 }

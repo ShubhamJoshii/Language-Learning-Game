@@ -3,8 +3,12 @@ import "./QuizRemaining.css"
 import axios from 'axios'
 import { notification } from './Notification'
 import { useNavigate } from 'react-router-dom'
+
+// Quiz Remaining Notification Shows when there is question left from the last session 
 const QuizRemainingNotification = ({ remainingQuiz,setRemainingQuiz ,userName,userId}) => {
     const navigate = useNavigate();
+
+    // for cancelling the existing exercise
     const cancelExcercise = async() => {
         await axios.delete(`/api/excercise/${remainingQuiz._id}`).then((response)=>{
             console.log(response.data.message)
@@ -26,6 +30,8 @@ const QuizRemainingNotification = ({ remainingQuiz,setRemainingQuiz ,userName,us
                     <p> Let's continue!`</p>
                     <div>
                         <button onClick={cancelExcercise}>Cancel</button>
+                        
+                        {/* // for completing the Left Quesiotn exrecise */}
                         <button onClick={async ()=>{
                             const id = await axios.get(`/api/getQuizesCategory/${remainingQuiz.Language}`).then((result)=>{
                                 return result.data

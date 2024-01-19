@@ -6,7 +6,6 @@ const ScoreBoard = () => {
     const [dataSet, setDataSet] = useState([]);
     
     const data = (data, i) => {
-        let colorCode = ["red", "green", "blue", "yellow", "orange", "darkblue"];
         return {
             labels: ['Correct', 'In-Correct'],
             datasets: [{
@@ -33,6 +32,7 @@ const ScoreBoard = () => {
             }
         }
     }
+    //  fetching all the result on User
     const fetchAllResult = async () => {
         await axios.get("/api/fetchAllResult").then((response) => {
             // console.log(response.data.dataList);

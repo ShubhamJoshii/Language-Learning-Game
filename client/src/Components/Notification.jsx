@@ -1,4 +1,5 @@
 import {toast} from "react-toastify";
+// for PopUp Notificaition Function
 export const notification = (notiText, type) => {
     if (type === "Success") {
       toast.success(notiText, {

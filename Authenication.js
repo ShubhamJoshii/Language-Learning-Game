@@ -2,6 +2,8 @@ const {UsersModel} = require("./Database");
 const jwt = require("jsonwebtoken");
 const SECRET_KEY = process.env.SECRET_KEY;
 
+
+// Middleware for Cheking whether user is logged in or not
 const Authenication = async (req,res,next)=>{
     try{
         const Token = req.cookies.LanguageAssessmentToken;

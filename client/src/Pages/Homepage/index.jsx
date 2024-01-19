@@ -13,6 +13,7 @@ const index = () => {
   const params = useParams()
   const navigate = useNavigate();
 
+  // for fetch All Quiz Language Available are in DB
   const fetchQuiz = async () => {
     await axios.get("/api/fetchAllQuiz").then((response) => {
       setAllQuiz(response.data.Data)
@@ -20,7 +21,7 @@ const index = () => {
       console.log(err)
     })
   }
-
+  // for starting the Quiz on basis of user login or not
   const startQuiz = () => {
     if (userData && params._id) {
       navigate(`/quiz/${params._id}`)

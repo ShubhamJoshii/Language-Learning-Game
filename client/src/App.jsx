@@ -21,6 +21,8 @@ const UserData = createContext();
 function App() {
   const [userData, setUserData] = useState(undefined);
   const [remainingQuiz, setRemainingQuiz] = useState({});
+
+  // checking the wheater user is log in or not
   const checkUserAlreadyLogin = async () => {
     await axios.get("/api/home").then((response) => {
       if (response.data.result) {
@@ -37,6 +39,7 @@ function App() {
 
   return (
     <>
+      {/* User Data Context Provider */}
       <UserData.Provider value={{ userData, setUserData, checkUserAlreadyLogin }}>
         <ToastContainer />
         <Router>

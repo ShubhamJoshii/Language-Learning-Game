@@ -19,7 +19,7 @@ const GlobalScoreBoard = () => {
         labels: Object.keys(dataSets),
         datasets: datasets()
     };
-
+    // Bar chart Option
     const options = {
         responsive: true,
         plugins: {
@@ -32,6 +32,8 @@ const GlobalScoreBoard = () => {
             },
         },
     };
+
+    // fetching the Global Score
     const fetchGlobalScore = async () => {
         await axios.get("/api/fetchGlobalScore").then((response) => {
             let obj = response.data.result;

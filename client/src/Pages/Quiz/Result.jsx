@@ -36,6 +36,7 @@ const Result = () => {
     }
     const options = {}
 
+    // for fething Quiz Result and Showing on Doughnut Chart
     const fetchResult = async () => {
         await axios.get(`/api/fetctResult/${params.excerciseID}`).then((response) => {
             // console.log(response.data)

@@ -21,7 +21,7 @@ if(env === "development"){
   app.use(require("./auth"));
 }else{
   app.use(`/api`, require("./auth"));
-  }
+}
 
 app.use(express.static(path.resolve(__dirname, "client", "docs")));
 

@@ -13,6 +13,7 @@ const Register = () => {
     Confirm_Password: ""
   })
 
+  // for Handling the Input Data
   const handleInput = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -21,6 +22,8 @@ const Register = () => {
   }
   const navigate = useNavigate();
 
+  
+  // for submitting the form detail to Backend before that some validation check on password
   const submitForm = async (e) => {
     e.preventDefault();
     // console.log(registerData);
@@ -50,6 +53,7 @@ const Register = () => {
     }
   }
 
+  // for handling the password visible or hide
   const handlePassword = (e) => {
     const a = document.getElementById('Password');
     const b = document.getElementById('Confirm_Password');
@@ -62,22 +66,7 @@ const Register = () => {
     }
   }
 
-  const handleInputEmail = (e) => {
-    const { name, value } = e.target;
-    const isValidInput = /^[A-Za-z\s]+$/.test(value[0]);
-    if (isValidInput || value === "") {
-      setregisterInfo({ ...registerData, [name]: value });
-    }
-  }
-
-  const handleInputName = (e) => {
-    const { name, value } = e.target;
-    const isValidInput = /^[A-Za-z\s]+$/.test(value);
-    if (isValidInput || value === "") {
-      setregisterInfo({ ...registerData, [name]: value });
-    }
-  };
-
+  // Handling the Password Validaition
   const handlePasswordValidation = (e) => {
     const password = registerData.Password;
     const lower = new RegExp('(?=.*[a-z])');

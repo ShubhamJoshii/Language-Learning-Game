@@ -8,6 +8,7 @@ const Filter = ({allQuiz}) => {
         <div id="filter">
             <p id='quizesCount'>Showing {allQuiz?.length} Quizes Type</p>
             <h4>Filters</h4>
+            {/* this not working yet */}
             <input type="search" name="search" id="search" placeholder='Search' />
             <div id='filterCategory'>
                 <h5>Language</h5>

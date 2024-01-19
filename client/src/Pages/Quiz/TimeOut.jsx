@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactLoading from 'react-loading';
 
+// for showing new quizes is fetching form backend
 const TimeOut = () => {
   return (
     <div id='StartQuizPage'>

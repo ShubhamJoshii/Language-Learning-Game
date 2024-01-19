@@ -12,12 +12,15 @@ const Login = () => {
   })
   const { checkUserAlreadyLogin } = useContext(UserData)
   const navigate = useNavigate();
+
+  // for Handling the Input Data
   const handleInput = (event) => {
     const name = event.target.name;
     const value = event.target.value;
     setLoginData({ ...LoginData, [name]: value })
   }
 
+  // for handling the password visible or hide
   const handlePassword = (e) => {
     const a = document.getElementById('Password');
     e.target.checked ?
@@ -25,6 +28,7 @@ const Login = () => {
       a.type = "password"
   }
 
+  // for submitting the form detail to Backend
   const submitForm = async (e) => {
     e.preventDefault();
     await axios.post("/api/login", LoginData).then((response) => {

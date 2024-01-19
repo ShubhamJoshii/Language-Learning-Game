@@ -1,8 +1,13 @@
 import React from 'react'
 import Wrong from "../../assets/Wrong.png"
 import Right from "../../assets/Right.png"
+
+
+// Providing feedback to user on every Quiz answered on basis on scoring and diffiulty level
 const Feedback = ({ feedback, nextExcerciseQuiz, quizQuestion, setLoading, selectedChoice, Answer, answedTotal, totalQuiz }) => {
     let difficultyLevel = quizQuestion.Difficulty_Level;
+
+    // fething the next quiz on basis of difficulty level
     const nextQuiz = () => {
         if (answedTotal < totalQuiz) {
             if (selectedChoice === quizQuestion.Answer) {
