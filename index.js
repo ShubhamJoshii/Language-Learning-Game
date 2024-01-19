@@ -8,7 +8,7 @@ const app = express();
 require("dotenv").config();
 
 const PORT = process.env.PORT  || 5000;
-const  env = process.env.NODE_ENV || 'development';
+const  env = process.env.NODE_ENV || 'production';
 
 app.use(cors())
 
@@ -17,11 +17,11 @@ app.use(express.json({limit:"25mb"}));
 app.use(express.urlencoded({limit:"25mb"}));
 app.use(cookieParser());
 
-// if(env === "development"){
-//   app.use(require("./auth"));
-// }else{
-  // }
-app.use(`/api`, require("./auth"));
+if(env === "development"){
+  app.use(require("./auth"));
+}else{
+  app.use(`/api`, require("./auth"));
+  }
 
 app.use(express.static(path.resolve(__dirname, "client", "docs")));
 

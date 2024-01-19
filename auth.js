@@ -115,6 +115,7 @@ router.post("/fetchQuiz/:quizLanguageID/:quizLevel", async (req, res) => {
 
 router.post("/addQuiz", async (req, res) => {
   const { Language, Questions } = req.body;
+  // console.log(Language, Questions);
   try {
     const fetchLanguage = await QuizModel.findOne({ Language });
     if (fetchLanguage) {

@@ -8,6 +8,7 @@ const Login = lazy(() => import("./Pages/Login"));
 const Register = lazy(() => import("./Pages/Register"));
 const Quiz = lazy(() => import("./Pages/Quiz"))
 const ScoreBoard = lazy(() => import("./Pages/ScoreBoard"))
+const AddQuiz = lazy(() => import("./Pages/AddQuiz"));
 const QuizRemainingNotification = lazy(() => import("./Components/QuizRemainingNotification"))
 const PreLoding = lazy(() => import("./Components/PreLoding.jsx"));
 
@@ -54,6 +55,7 @@ function App() {
             <Route path="/quiz/:_id/:excerciseID" element={<Quiz />} />
             <Route path="/scoreboard" element={<ScoreBoard />} />
             <Route path="/scoreboard/:type" element={<ScoreBoard />} />
+            <Route path="/AddQuiz" element={<AddQuiz />} />
             {
               !userData &&
               <>
