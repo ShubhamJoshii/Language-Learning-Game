@@ -50,13 +50,13 @@ const index = () => {
       }
       await axios.post("/api/addQuiz", { Language: AddLanguage.Language, Questions: data }).then((response) => {
         console.log(response.data)
-        notification(response.data.message, "Sucess")
+        notification(response.data.message, "Success")
       })
     } else if (AddLanguage.Quiz.length < 2) {
-      notification("Add Choice More than 2 Choice", "UnSucess")
+      notification("Add Choice More than 2 Choice", "Un-Success")
       // console.log(AddLanguage)
     } else if (AddLanguage.Answer) {
-      notification("First, Select Answer Please", "UnSucess")
+      notification("First, Select Answer Please", "Un-Success")
     }
   }
 

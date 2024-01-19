@@ -54,9 +54,10 @@ const Header = () => {
                 <ol>
                     <li><NavLink to={"/"} className={location.pathname.includes("/home") ? "active" : ""}>HOME</NavLink></li>
                     <li><NavLink to={"/scoreboard/UserPerformance"}  className={location.pathname.includes("/scoreboard") ? "active" : ""}>SCORE BOARD</NavLink></li>
+                    <li><NavLink to={"/AddQuiz"} >Add Quiz</NavLink></li>
                     {
                         userData ?
-                            <li><button onClick={() => setLogoutConfirmation(!logoutConfirmation)}>LOGOUT</button></li>
+                        <li><button onClick={() => setLogoutConfirmation(!logoutConfirmation)}>LOGOUT</button></li>
                             :
                             <>
                                 <li><NavLink to={"/login"}>LOGIN</NavLink></li>
@@ -66,10 +67,11 @@ const Header = () => {
                 </ol>
                 <GiHamburgerMenu id="hamburgerMenu" onClick={handleSlider} />
                 {/* {
-                    menuSlide && */}
+                menuSlide && */}
                 <ul id='menuSlider'>
                     <NavLink to={"/"}  className={location.pathname.includes("/home") ? "active" : ""} onClick={handleSlider}><li className='listText'>HOME</li></NavLink>
                     <NavLink to={"/scoreboard/UserPerformance"} className={location.pathname.includes("/scoreboard") ? "active" : ""} onClick={handleSlider} ><li>SCORE BOARD</li></NavLink>
+                    <NavLink to={"/AddQuiz"} onClick={handleSlider} ><li>Add Quiz</li></NavLink>
                     {
                         userData ?
                             <button onClick={() => { setmenuSlide(!menuSlide); setLogoutConfirmation(!logoutConfirmation) }}><li className='listText'>LOGOUT</li></button>

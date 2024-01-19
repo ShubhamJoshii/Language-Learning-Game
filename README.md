@@ -25,7 +25,7 @@ To run this project, you will need to add the following environment variables to
 
 `SECRET_KEY` 
 
-`NODE_ENV`
+`NODE_ENV` = "development" / "production"
 
 #### for Backend
 ```bash
@@ -54,6 +54,7 @@ To run this project, you will need to add the following environment variables to
     NOW WEB APP RUNNING ON `http://localhost:3000/`
 ```
 
+### for Added a Quiz goto `/AddQuiz` route for adding A quiz on New and Existing Quiz Language. 
 
 
 ## 🚀 About Me

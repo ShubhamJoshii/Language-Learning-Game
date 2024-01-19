@@ -113,20 +113,24 @@ router.post("/fetchQuiz/:quizLanguageID/:quizLevel", async (req, res) => {
   }
 });
 
-router.post("/addQuiz", async (req, res) => {
+router.post("/addQuiz",Authenication, async (req, res) => {
   const { Language, Questions } = req.body;
   // console.log(Language, Questions);
   try {
-    const fetchLanguage = await QuizModel.findOne({ Language });
-    if (fetchLanguage) {
-      // console.log(fetchLanguage);
-      fetchLanguage.Questions = fetchLanguage.Questions.concat(Questions);
-      await fetchLanguage.save();
-      res.status(200).send({ message: "Quiz Added on Existing Langugage" });
-    } else {
-      const saveQuiz = new QuizModel({ Language, Questions });
-      await saveQuiz.save();
-      res.status(200).send({ message: "Quiz Added and Lanuaguge Created" });
+    if(req.rootUser){
+      const fetchLanguage = await QuizModel.findOne({ Language });
+      if (fetchLanguage) {
+        // console.log(fetchLanguage);
+        fetchLanguage.Questions = fetchLanguage.Questions.concat(Questions);
+        await fetchLanguage.save();
+        res.status(200).send({ message: "Quiz Added on Existing Langugage" });
+      } else {
+        const saveQuiz = new QuizModel({ Language, Questions });
+        await saveQuiz.save();
+        res.status(200).send({ message: "Quiz Added and Lanuaguge Created" });
+      }
+    }else{
+      res.status(200).send({ message: "Please Login First" });
     }
   } catch (err) {
     res.status(200).send({ message: "Error in Quiz Adding" });
