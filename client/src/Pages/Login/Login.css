@@ -1,0 +1,114 @@
+#AuthContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 500px; */
+  height: calc(100vh - 200px);
+  #Login {
+    width: 450px;
+    /* min-height: 60vh; */
+    /* max-height: 70vh; */
+    border-radius: 10px;
+    box-shadow: 0 0 10px grey;
+    margin: auto;
+    background-color: white;
+    color: black;
+    padding: 20px;
+    text-align: center;
+    #login-Input {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      margin: 20px 20px 2px 20px;
+      label {
+        font-size: 12px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        opacity: 0.8;
+        margin-top: 14px;
+      }
+      input[type="email"],
+      input[type="password"],
+      input[type="text"] {
+        background-color: inherit;
+        border: 2px solid rgba(128, 128, 128, 0.528);
+        width: 100%;
+        font-size: 16px;
+        color: black;
+        letter-spacing: 1px;
+        padding: 6px;
+        margin-top: 4px;
+      }
+    }
+    #formMethod {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: auto;
+      width: 95%;
+      div {
+        display: flex;
+        align-items: center;
+        label {
+          font-size: 12px;
+        }
+        input[type="checkbox"] {
+          background-color: inherit;
+        }
+      }
+    }
+    input[type="submit"] {
+      background-color: aqua;
+      font-size: 20px;
+      font-weight: 900;
+      border: none;
+      width: 80%;
+      border-radius: 5px;
+      padding: 5px;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      /* color: red; */
+      transition: 0.4s;
+      transform: scale(1.02);
+      background-color: rgb(0, 191, 255);
+    }
+    #forget_Password {
+      color: grey;
+      font-size: 12px;
+      /* width: 80%; */
+      margin: 2px 0px 10px 0px;
+      text-align: end;
+      cursor: pointer;
+    }
+    #forget_Password:hover {
+      color: black;
+    }
+    @media screen and (max-width: 600px) {
+      width: calc(90vw - 40px);
+      h2 {
+        font-size: 20px;
+        margin: 0;
+      }
+
+      #login-Input {
+        margin: 0;
+        input[type="email"],
+        input[type="password"] {
+          padding: 4px;
+          font-size: 14px;
+        }
+      }
+      input[type="submit"] {
+        margin-top: 20px;
+        font-size: 16px;
+      }
+      p {
+        font-size: 12px;
+      }
+    }
+  }
+  @media screen and (max-width: 1024px) {
+    height: calc(100vh - 100px);
+  }
+}

@@ -1,0 +1,72 @@
+#QuizRemainingNotification{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.306);
+    color: black;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .inner{
+        background-color: white;
+        padding: 40px;
+        text-align: center;
+        border-radius: 15px;
+        box-shadow: 0 0 4px white;
+        h1{
+            font-size: 24px;
+        }
+        div{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5%;
+            button{
+                padding: 6px;
+                width: 45%;
+                font-size: 18px;
+                font-weight: bold;
+                border: none;
+                border-radius: 2px;
+                background: none;
+                cursor: pointer;
+                transition: 1s;
+            }
+            button:hover{
+                transform: scale(1.04);
+            }
+            button:nth-child(1){
+                color: #a09f9f;
+                border: 2px solid #a09f9f;
+            }
+            button:nth-child(2){
+                background: #2852e6;
+            }
+        }
+    }
+    @media screen and (max-width:650px) {
+        .inner{
+            padding: 30px 10px;
+            h1{
+                font-size: 18px;
+            }
+            p{
+                font-size: 14px;
+            }
+        }
+    }
+    @media screen and (max-width:433px) {
+        .inner{
+            padding: 10px;
+            margin: 0px 10px;
+            h1{
+                font-size: 18px;
+            }
+            p{
+                font-size: 14px;
+            }
+        }
+    }
+  }
