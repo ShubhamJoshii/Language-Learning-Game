@@ -23,15 +23,15 @@ if(env === "development"){
   app.use(`/api`, require("./auth"));
 }
 
-app.use(express.static(path.resolve(__dirname, "Client", "docs")));
+app.use(express.static(path.resolve(__dirname, "client", "docs")));
 
 app.get("/", (req, res) => {
-  console.log(path.resolve(__dirname, "Client", "docs"));
-  res.status(200).sendFile(path.resolve(__dirname, "Client", "docs"));
+  console.log(path.resolve(__dirname, "client", "docs"));
+  res.status(200).sendFile(path.resolve(__dirname, "client", "docs"));
 });
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname + "/Client/docs/index.html"));
+  res.sendFile(path.join(__dirname + "/client/docs/index.html"));
 });
 
 app.listen(PORT,()=>{
